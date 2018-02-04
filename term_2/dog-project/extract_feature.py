@@ -42,7 +42,13 @@ if __name__ == '__main__':
     # Gather file paths
     dog_images = glob("dogImages/*/*/*")
     human_face_images = glob("lfw/*/*")
-    distract_images = glob("AnimTransDistr/*/*")
+    #distract_images = glob("AnimTransDistr/*/*")
+    distract_images = []
+    with open("used_images_list.txt", 'r') as f:
+        for line in f:
+            distract_images.append(line.rstrip("\n"))
+
+
     print("Number of images in dog dataset", len(dog_images))
     print("Number of images in human dataset", len(human_face_images))
     print("Number of negative samples ", len(distract_images))
